@@ -1,6 +1,6 @@
 package br.com.zupacademy.daniel.casadocodigo.form;
 
-import br.com.zupacademy.daniel.casadocodigo.config.validacao.EmailUnicoAutor;
+import br.com.zupacademy.daniel.casadocodigo.config.validacao.ValorUnico;
 import br.com.zupacademy.daniel.casadocodigo.model.Autor;
 import org.hibernate.validator.constraints.Length;
 
@@ -13,33 +13,16 @@ public class AutorForm {
     private String nome;
     @NotEmpty
     @Email
-    @EmailUnicoAutor
+    @ValorUnico(classe = Autor.class, campo = "email", message = "email deve ser unico!")
     private String email;
     @NotEmpty
     @Length(max = 400)
     private String descricao;
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
+    public AutorForm(String nome, String email, String descricao) {
         this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 

@@ -1,7 +1,5 @@
 package br.com.zupacademy.daniel.casadocodigo.model;
 
-import br.com.zupacademy.daniel.casadocodigo.config.validacao.NomeUnicoCategoria;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -14,6 +12,9 @@ public class Categoria {
     private Long id;
     @NotBlank
     private String nome;
+
+    @Deprecated
+    public Categoria() {}
 
     public Categoria(String nome) {
         this.nome = nome;
