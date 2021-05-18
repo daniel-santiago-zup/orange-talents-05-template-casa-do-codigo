@@ -1,5 +1,6 @@
 package br.com.zupacademy.daniel.casadocodigo.form;
 
+import br.com.zupacademy.daniel.casadocodigo.config.validacao.EmailUnicoAutor;
 import br.com.zupacademy.daniel.casadocodigo.model.Autor;
 import org.hibernate.validator.constraints.Length;
 
@@ -12,6 +13,7 @@ public class AutorForm {
     private String nome;
     @NotEmpty
     @Email
+    @EmailUnicoAutor
     private String email;
     @NotEmpty
     @Length(max = 400)
