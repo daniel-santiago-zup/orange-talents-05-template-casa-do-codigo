@@ -25,6 +25,7 @@ public class Autor {
 
     private LocalDateTime dataDeRegistro;
 
+    @Deprecated
     public Autor() {}
 
     public Autor(@NotBlank String nome,
@@ -34,10 +35,6 @@ public class Autor {
         this.email = email;
         this.descricao = descricao;
         this.dataDeRegistro = LocalDateTime.now();
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public String getNome() {
@@ -50,13 +47,5 @@ public class Autor {
 
     public String getDescricao() {
         return descricao;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public LocalDateTime getDataDeRegistro() {
-        return dataDeRegistro;
     }
 }

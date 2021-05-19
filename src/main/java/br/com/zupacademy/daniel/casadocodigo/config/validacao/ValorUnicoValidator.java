@@ -31,7 +31,6 @@ public class ValorUnicoValidator implements ConstraintValidator<ValorUnico, Stri
                 .setParameter("pValor",valor)
                 .getResultList();
 
-
         return resultadosConsulta.isEmpty();
     }
 }
