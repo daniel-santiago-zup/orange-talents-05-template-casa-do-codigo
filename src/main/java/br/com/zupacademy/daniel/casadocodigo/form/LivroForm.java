@@ -21,6 +21,9 @@ public class LivroForm {
     @NotBlank
     @ValorUnico(classe = Livro.class, campo = "titulo")
     private String titulo;
+    private String subtitulo;
+    @NotBlank
+    private String urlCapa;
     @NotBlank
     @Size(max = 500)
     private String resumo;
@@ -47,6 +50,8 @@ public class LivroForm {
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public LivroForm(String titulo,
+                 String subtitulo,
+                 String urlCapa,
                  String resumo,
                  String sumario,
                  BigDecimal preco,
@@ -56,6 +61,8 @@ public class LivroForm {
                  Long idCategoria,
                  Long idAutor) {
         this.titulo = titulo;
+        this.subtitulo = subtitulo;
+        this.urlCapa = urlCapa;
         this.resumo = resumo;
         this.sumario = sumario;
         this.preco = preco;
@@ -71,6 +78,8 @@ public class LivroForm {
         Autor autor = autorRepository.getOne(this.idAutor);
 
         return new Livro(this.titulo,
+                this.subtitulo,
+                this.urlCapa,
                 this.resumo,
                 this.sumario,
                 this.preco,

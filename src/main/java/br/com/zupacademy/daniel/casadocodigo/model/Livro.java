@@ -1,6 +1,7 @@
 package br.com.zupacademy.daniel.casadocodigo.model;
 
 import org.hibernate.validator.constraints.ISBN;
+import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -15,6 +16,11 @@ public class Livro {
     private Long id;
     @NotBlank
     private String titulo;
+    private String subtitulo;
+    @NotBlank
+    @URL
+    @Size(max = 2048)
+    private String urlCapa;
     @NotBlank
     @Size(max = 500)
     private String resumo;
@@ -42,6 +48,8 @@ public class Livro {
     public Livro() {}
 
     public Livro(@NotBlank String titulo,
+                 String subtitulo,
+                 @NotBlank @URL @Size(max = 2048) String urlCapa,
                  @NotBlank @Size(max = 500) String resumo,
                  String sumario,
                  @NotNull @Min(20) BigDecimal preco,
@@ -51,6 +59,8 @@ public class Livro {
                  @NotNull Categoria categoria,
                  @NotNull Autor autor) {
         this.titulo = titulo;
+        this.subtitulo = subtitulo;
+        this.urlCapa = urlCapa;
         this.resumo = resumo;
         this.sumario = sumario;
         this.preco = preco;
@@ -99,5 +109,13 @@ public class Livro {
 
     public Autor getAutor() {
         return autor;
+    }
+
+    public String getUrlCapa() {
+        return urlCapa;
+    }
+
+    public String getSubtitulo() {
+        return subtitulo;
     }
 }
